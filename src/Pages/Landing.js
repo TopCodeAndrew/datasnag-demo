@@ -3,6 +3,16 @@ import axios from 'axios'
 import {setNewQueriedUser} from '../redux/querySlice'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@mui/material/NativeSelect';
+ import {
+  Select,
+  outlinedInputClasses,
+  selectClasses
+} from '@mui/material';
+import { styled } from '@mui/system';
+
 
 
 const Landing = () => {
@@ -35,14 +45,26 @@ const Landing = () => {
       <div className='info-input'>
         <div className='first-line-info-input'>
           <h3> Find data related to the</h3>
-        <select onChange={(e)=>setDataPointType(e.target.value)}style={{marginLeft:'10px'}}id="data-type">
+        {/* <select onChange={(e)=>setDataPointType(e.target.value)}style={{marginLeft:'10px'}}id="data-type">
           <option value="email"> email </option>
           <option value="phone"> phone number</option>
-        </select>
+        </select> */}
+
+<FormControl>
+        <Select
+          defaultValue={30}
+        >
+          <option value={"email"}>email</option>
+          <option value={"phone"}>phone</option>
+        </Select>
+      </FormControl>
+
+
           <h3 style={{margin:'0px 10px'}}>:</h3>
           <input onChange={(e)=>{setUserInput(e.target.value)}} placeholder='insert email or phone here'/>
         </div>
-          <button onClick={()=>{handleClick(dataPointType, userInput)}}>SEARCH {dataPointType.toUpperCase()}</button>
+        <Button size="large" variant="contained" onClick={()=>{handleClick(dataPointType, userInput)}}>SEARCH {dataPointType.toUpperCase()}
+      </Button>
       </div>
     </div>
   )
