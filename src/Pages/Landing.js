@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
 import NativeSelect from '@mui/material/NativeSelect';
  import {
   Select,
@@ -33,7 +34,7 @@ const Landing = () => {
     axios.post("http://localhost:5000/api/user_data", userInfo).then(res=>{
       console.log(res.data)
       dispatch(setNewQueriedUser(res.data))
-      navigate('/results')
+      navigate('/teaser')
     }).catch(err=>alert("Could not find any associated data"))
   }
   return (
@@ -61,7 +62,8 @@ const Landing = () => {
 
 
           <h3 style={{margin:'0px 10px'}}>:</h3>
-          <input onChange={(e)=>{setUserInput(e.target.value)}} placeholder='insert email or phone here'/>
+          <TextField id="standard-basic" label="email or phone" variant="standard" onChange={(e)=>{setUserInput(e.target.value)}}/>
+          {/* <input  placeholder='insert email or phone here'/> */}
         </div>
         <Button size="large" variant="contained" onClick={()=>{handleClick(dataPointType, userInput)}}>SEARCH {dataPointType.toUpperCase()}
       </Button>
