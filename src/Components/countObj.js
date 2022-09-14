@@ -94,7 +94,6 @@ let countDataPoints = (data) => {
     var currentCount = 0;
 
     if (data) {
-        console.log(data);
         for (let i = 0; i < data.length; i++) {
             if (typeof data[i] === "object") {
                 currentCount = currentCount + countDataPoints(data[i]);
