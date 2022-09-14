@@ -75,17 +75,15 @@ let exampleObj = {
     updated: "2022-07-13",
 };
 
-function isArray(obj) {
-    if (obj == null) {
-        return false;
-    } else if (typeof obj !== "object") {
-        return false;
-    }
-    return typeof obj[Symbol.iterator] === "function";
-}
-
-// data will ALWAYS be an array or object
 let countDataPoints = (data) => {
+    function isArray(obj) {
+        if (obj == null) {
+            return false;
+        } else if (typeof obj !== "object") {
+            return false;
+        }
+        return typeof obj[Symbol.iterator] === "function";
+    }
     // if (data is an object, and not null or undefined)
     if (typeof data === "object" && !isArray(data) && data) {
         data = Object.values(data);
@@ -108,4 +106,7 @@ let countDataPoints = (data) => {
     return currentCount;
 };
 
-console.log(countDataPoints(exampleObj));
+// data will ALWAYS be an array or object
+module.exports = {
+    countDataPoints: countDataPoints,
+};
