@@ -17,6 +17,12 @@ const Teaser = () => {
                 We were able to find {dataCount ? dataCount : null} data points
                 related to the user
             </h2>
+            <form
+                action="http://localhost:5000/create-checkout-session"
+                method="POST"
+            >
+                <button type="submit">Checkout</button>
+            </form>
         </div>
     );
 };
